@@ -1,5 +1,7 @@
 # Shizuku
 
+## Fok from the original https://shizuku.rikka.app, Just changed the package name to bypass the blacklist of Xiaomi HyperOS 2 for Xiaomi 14 Ultra
+
 ## Background
 
 When developing apps that requires root, the most common method is to run some commands in the su shell. For example, there is an app that uses the `pm enable/disable` command to enable/disable components.
