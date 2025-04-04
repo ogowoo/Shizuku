@@ -40,24 +40,24 @@ jobs:
           echo KEYSTORE_ALIAS=a >> signing.properties
           echo KEYSTORE_ALIAS_PASSWORD=passwd >> signing.properties
           echo KEYSTORE_FILE=../key.jks >> signing.properties
-      - name: Cache Gradle Dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            !~/.gradle/caches/build-cache-*
-          key: gradle-deps-app-v2-${{ hashFiles('**/build.gradle') }}
-          restore-keys: |
-            gradle-deps
-      - name: Cache Gradle Build
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches/build-cache-*
-          key: gradle-builds-app-v2-${{ github.sha }}
-          restore-keys: |
-            gradle-builds
+#      - name: Cache Gradle Dependencies
+#        uses: actions/cache@v3
+#        with:
+#          path: |
+#            ~/.gradle/caches
+#            ~/.gradle/wrapper
+#            !~/.gradle/caches/build-cache-*
+#          key: gradle-deps-app-v2-${{ hashFiles('**/build.gradle') }}
+#          restore-keys: |
+#            gradle-deps
+#      - name: Cache Gradle Build
+#        uses: actions/cache@v3
+#        with:
+#          path: |
+#            ~/.gradle/caches/build-cache-*
+#          key: gradle-builds-app-v2-${{ github.sha }}
+#          restore-keys: |
+#            gradle-builds
       - name: Build with Gradle
         id: buildWithGradle
         run: |
