@@ -33,18 +33,16 @@ jobs:
           echo KEYSTORE_ALIAS=${{ secrets.KEYSTORE_ALIAS }} >> signing.properties
           echo KEYSTORE_ALIAS_PASSWORD='${{ secrets.KEYSTORE_ALIAS_PASSWORD }}' >> signing.properties
           echo KEYSTORE_FILE=../key.jks >> signing.properties
-          echo ${{ secrets.KEYSTORE }} | base64 --decode > key.jks
-          cat signing.properties
+          echo ${{ secrets.KEYSTORE }} | base64 --decode > key.jks || true
 
-      - name: Write temporary key
-        if: hashFiles('key.jks') == '' && !steps.vars.outputs.HAS_SECRET
+      - name: Generate new keystore if not valid
         run: |
-          keytool -genkey -alias a -dname CN=_ -storepass passwd -keypass passwd -keystore key.jks
-          echo KEYSTORE_PASSWORD=passwd >> signing.properties
-          echo KEYSTORE_ALIAS=a >> signing.properties
-          echo KEYSTORE_ALIAS_PASSWORD=passwd >> signing.properties
-          echo KEYSTORE_FILE=../key.jks >> signing.properties
-          cat signing.properties
+          keytool -list -keystore key.jks -storepass ${{ secrets.KEYSTORE_PASSWORD }} || (
+            keytool -genkey -alias new_alias -dname CN=example -storepass new_passwd -keypass new_passwd -keystore key.jks
+            echo KEYSTORE_PASSWORD=new_passwd >> signing.properties
+            echo KEYSTORE_ALIAS=new_alias >> signing.properties
+            echo KEYSTORE_ALIAS_PASSWORD=new_passwd >> signing.properties
+          )
 
       - name: Cache Gradle Dependencies
         uses: actions/cache@v3
