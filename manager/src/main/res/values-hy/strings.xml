@@ -3,7 +3,7 @@
     <string name="dialog_legacy_not_support_title">%1$s-ը չի ընդունում այժմյան Shizuku-ն</string>
     <string name="toast_copied_to_clipboard_with_text">&lt;b&gt;%s&lt;/b&gt;-ն պատճենվել է կցատարում։</string>
     <string name="toast_copied_to_clipboard">%s-ն
-\nպատճենվել է կցատարում։</string>
+\nպատճենվել է  կցատարում։</string>
     <string name="dialog_cannot_open_browser_title">Չհաջողվեց միացնել ինտերնետի ծրագիրը</string>
     <string name="start_with_root_failed">Չհաջողվեց բեռնել ծառայությունը քանի որ root թույլտվությունը մերժված է կամ սարքը root չունի։</string>
     <string name="starter">Սկսնակ</string>
