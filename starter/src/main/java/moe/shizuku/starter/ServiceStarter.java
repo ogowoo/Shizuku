@@ -21,7 +21,7 @@ public class ServiceStarter {
 
     private static final String TAG = "ShizukuServiceStarter";
 
-    private static final String EXTRA_BINDER = "moe.shizuku.privileged.intent.extra.BINDER";
+    private static final String EXTRA_BINDER = "moe.shizuku.privileged.api.intent.extra.BINDER";
 
     public static final String DEBUG_ARGS;
 
