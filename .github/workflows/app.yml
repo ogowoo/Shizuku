@@ -35,18 +35,18 @@ jobs:
           echo KEYSTORE_FILE=../key.jks >> signing.properties
           echo ${{ secrets.KEYSTORE }} | base64 --decode > key.jks || true
 
-#      - name: Remove old keystore
-#        run: |
-#          if [ -f key.jks ]; then
-#            rm key.jks
-#          fi
+      - name: Remove old keystore
+        run: |
+          if [ -f key.jks ]; then
+            rm key.jks
+          fi
 
-#      - name: Generate new keystore
-#        run: |
-#          keytool -genkey -alias new_alias -dname CN=example -storepass new_passwd -keypass new_passwd -keystore key.jks -keyalg RSA
-#          echo KEYSTORE_PASSWORD=new_passwd >> signing.properties
-#          echo KEYSTORE_ALIAS=new_alias >> signing.properties
-#          echo KEYSTORE_ALIAS_PASSWORD=new_passwd >> signing.properties
+      - name: Generate new keystore
+        run: |
+          keytool -genkey -alias new_alias -dname CN=example -storepass new_passwd -keypass new_passwd -keystore key.jks -keyalg RSA
+          echo KEYSTORE_PASSWORD=new_passwd >> signing.properties
+          echo KEYSTORE_ALIAS=new_alias >> signing.properties
+          echo KEYSTORE_ALIAS_PASSWORD=new_passwd >> signing.properties
 
       - name: Cache Gradle Dependencies
         uses: actions/cache@v3
